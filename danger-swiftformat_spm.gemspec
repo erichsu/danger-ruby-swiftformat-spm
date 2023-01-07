@@ -11,7 +11,8 @@ Gem::Specification.new do |spec|
   spec.email         = ["tingyao.hsu@ui.com"]
   spec.description   = "A short description of danger-swiftformat_spm."
   spec.summary       = "A longer description of danger-swiftformat_spm."
-  spec.homepage      = "https://github.com/Eric Hsu/danger-swiftformat_spm"
+  # spec.homepage      = "https://github.com/Eric Hsu/danger-swiftformat_spm"
+  spec.homepage      = "https://github.com/garriguv/danger-ruby-swiftformat"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
