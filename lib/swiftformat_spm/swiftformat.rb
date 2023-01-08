@@ -1,4 +1,6 @@
 require "logger"
+require 'diff/lcs'
+require 'diff/lcs/string'
 
 module Danger
   class SwiftFormat
@@ -20,11 +22,9 @@ module Danger
       end
 
       cmd << %w(--lint --lenient)
-      puts cmd
       stdout, stderr, status = Cmd.run(cmd.flatten)
 
       output = stdout.empty? ? stderr : stdout
-      puts stdout
       raise "Error running SwiftFormat: Empty output." unless output
 
       output = output.strip.no_color
@@ -57,7 +57,7 @@ module Danger
         next if match.count < 2
 
         errors << {
-            file: match[0].sub("#{Dir.pwd}/", ""),
+            file: match[0].sub("#{match[0].lcs(Dir.pwd).join}/", ""),
             rules: match[1].split(",").map(&:strip)
         }
       end
