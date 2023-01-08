@@ -54,7 +54,6 @@ module Danger
 
       # Find Swift files
       swift_files = find_swift_files
-      puts swift_files
 
       # Stop processing if there are no swift files
       return if swift_files.empty?
@@ -69,7 +68,7 @@ module Danger
       message = "### SwiftFormat found issues:\n\n"
       message << "| File | Rules |\n"
       message << "| ---- | ----- |\n"
-      results[:errors].each do |error|
+      results[:errors].uniq.each do |error|
         message << "| #{error[:file].gsub("#{Dir.pwd}/", '')} | #{error[:rules].join(', ')} |\n"
       end
 
